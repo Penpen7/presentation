@@ -52,18 +52,19 @@ go test ./... -v
 # ECサイトの在庫管理システムの仕様
 - 商品が売れたら在庫数を減らす
 - 在庫数が0の商品を購入できない
+
 # 書いたコード
 ```go
 // 在庫管理システム
 type StockController struct {}
 
-// 在庫数を更新する
-func (c *StockController) KeepItem(itemID) error {}
+// 商品を確保する
+func (c *StockController) KeepItem(itemID string) error {}
 ```
 # テストコード
 ```go
 func Test_正常系_在庫数が0より大きい場合(t *testing.T) { }
-func Test_在庫切れエラー(t *testing.T) { }
+func Test_異常系_在庫切れエラー(t *testing.T) { }
 ```
 <!-- end_slide -->
 どこが悪いのか？
