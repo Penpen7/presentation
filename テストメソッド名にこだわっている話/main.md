@@ -30,6 +30,9 @@ KINTO FACTORYの開発に携わっています
 ---
 - 以下の本の内容を参考にしています
 - [単体テストの考え方/使い方](https://www.amazon.co.jp/dp/4839981728/)
+
+![](book.png)
+
 <!-- end_slide -->
 
 <!-- jump_to_middle -->
