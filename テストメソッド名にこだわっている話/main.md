@@ -68,48 +68,7 @@ KINTO FACTORYの開発に携わっています
 ---
 <!-- end_slide -->
 
-テストコード
----
-<!-- column_layout: [1, 1] -->
-<!-- column: 0 -->
-# テスト対象のコード
-```file +line_numbers {3-6}
-path: ./src/main.go
-language: go
-```
-<!-- column: 1 -->
-# テストコード
-```file +line_numbers {5-11}
-path: ./src/main_test.go
-language: go
-```
-<!-- reset_layout -->
-# テスト実行
-```bash +exec
-/// go clean -testcache
-/// cd src
-go test ./... -v
-```
-<!-- end_slide -->
-
-これがテストメソッド
----
-```file +line_numbers {5}
-path: ./src/main_test.go
-language: go
-```
-<!-- end_slide -->
-
-これがテストメソッドの名前
---
-```go
-Test_合計値を計算できる
-```
-- 名前からどういうテストを実行しているかがわかる
-- これを分かりやすくしようという話
-
-<!-- end_slide -->
-ありえそうな例でやってみる
+テストコードとは
 ---
 
 <!-- column_layout: [1, 1] -->
@@ -143,6 +102,25 @@ func (c *ECSystem) Order(itemID string) error {
 func Test_正常系_在庫数が0より大きい場合(t *testing.T) { }
 func Test_異常系_在庫切れエラー(t *testing.T) { }
 ```
+<!-- end_slide -->
+
+これがテストメソッド
+---
+```go
+func Test_正常系_在庫数が0より大きい場合(t *testing.T) { }
+func Test_異常系_在庫切れエラー(t *testing.T) { }
+```
+<!-- end_slide -->
+
+これがテストメソッドの名前
+--
+```go
+Test_正常系_在庫数が0より大きい場合
+Test_異常系_在庫切れエラー
+```
+- 名前からどういうテストを実行しているかがわかる
+- これを分かりやすくしようという話
+
 <!-- end_slide -->
 どういう意図で書かれたテストコードなのかがわかりにくい
 ---
