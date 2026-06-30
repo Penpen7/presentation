@@ -1,0 +1,168 @@
+/* @theme nix-talk */
+
+@import 'default';
+
+section {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: 34px;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    -apple-system, "Helvetica Neue", sans-serif;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* 通常スライド: タイトルを上部に固定し、本文を上から並べる */
+section:not(.lead) {
+  justify-content: flex-start;
+  padding-top: 150px;
+  padding-bottom: 150px; /* 下部の発言エリア分の余白 */
+}
+
+/* 最下部の発言（吹き出し＋アイコン） */
+.talk {
+  position: absolute;
+  left: 90px;
+  right: 90px; /* 右下のページ番号に被らないよう余白を確保 */
+  bottom: 24px;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.talk .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-image: url("icon.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.talk .bubble {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  border-radius: 0;
+  padding: 14px 20px;
+  font-size: 0.62em; /* 標準（中くらいの発言） */
+  line-height: 1.4;
+}
+
+/* 発言の文字数に応じて使い分け */
+.talk .bubble.lg { font-size: 0.8em; }  /* 短い発言 */
+.talk .bubble.sm { font-size: 0.5em; }  /* 長い発言 */
+
+/* 吹き出しのしっぽ（アイコン側を指す、縦中央） */
+.talk .bubble::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  bottom: 20px;
+  border: 8px solid transparent;
+  border-right-color: #d1d5db;
+}
+
+.talk .bubble::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: 20px;
+  border: 8px solid transparent;
+  border-right-color: #ffffff;
+}
+
+/* タイトル直後の本文の余白を詰める */
+section:not(.lead) > :first-of-type {
+  margin-top: 0;
+}
+
+section:not(.lead) > h1 {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  margin: 0;
+}
+
+section h1 {
+  font-size: 2.8em;
+  color: #1a1a1a;
+  text-align: center;
+  white-space: nowrap;
+}
+
+section h2 {
+  font-size: 1.1em;
+  color: #2563eb; /* アクセントカラー（青） */
+}
+
+section a {
+  color: #2563eb;
+}
+
+/* 箇条書き */
+section ul,
+section ol {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* コードブロック: スライド下部に配置 */
+section:not(.lead) pre {
+  margin-top: auto;
+}
+
+section pre {
+  font-size: 0.9em;
+  background: #f6f8fa; /* 極薄グレー */
+  border: none;
+  border-radius: 0;
+  padding: 0.7em 1em;
+  max-width: 80%; /* 全幅にしない（一定幅・左寄せ） */
+}
+
+/* コードブロック内のコードは背景を持たせない（まだら防止） */
+section pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* シンタックスハイライト（GitHub Light 風） */
+section pre code .hljs-comment,
+section pre code .hljs-quote { color: #6e7781; font-style: italic; }
+section pre code .hljs-keyword,
+section pre code .hljs-literal,
+section pre code .hljs-built_in,
+section pre code .hljs-type { color: #cf222e; }
+section pre code .hljs-string,
+section pre code .hljs-attr,
+section pre code .hljs-meta-string { color: #0a3069; }
+section pre code .hljs-number,
+section pre code .hljs-symbol { color: #0550ae; }
+section pre code .hljs-title,
+section pre code .hljs-section,
+section pre code .hljs-name,
+section pre code .hljs-attribute { color: #8250df; }
+section pre code .hljs-meta { color: #116329; }
+
+/* インラインコード（本文中のみ） */
+section :not(pre) > code {
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+section code,
+section pre {
+  font-family: "SF Mono", "Menlo", "JetBrainsMono Nerd Font", monospace;
+}
+
+/* 中央寄せ（表紙・区切りスライド） */
+section.lead h1 {
+  text-align: center;
+}
