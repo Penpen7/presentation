@@ -12,10 +12,13 @@ section {
   padding-right: 40px;
 }
 
-/* 通常スライド: タイトルを上部に固定し、本文を上から並べる */
+/* 通常スライド: タイトルを上部に置き、本文を上から並べる */
 section:not(.lead) {
-  justify-content: flex-start;
-  padding-top: 150px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  padding-top: 30px;
   padding-bottom: 150px; /* 下部の発言エリア分の余白 */
 }
 
@@ -76,17 +79,13 @@ section:not(.lead) {
   border-right-color: #ffffff;
 }
 
-/* タイトル直後の本文の余白を詰める */
-section:not(.lead) > :first-of-type {
-  margin-top: 0;
+section:not(.lead) > h1 {
+  margin: 0 0 8px 0; /* タイトルとコンテンツの間の余白 */
 }
 
-section:not(.lead) > h1 {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  margin: 0;
+/* タイトル直後の本文の余白を詰める */
+section:not(.lead) > h1 + * {
+  margin-top: 0;
 }
 
 section h1 {
@@ -94,6 +93,7 @@ section h1 {
   color: #1a1a1a;
   text-align: center;
   white-space: nowrap;
+  font-weight: 700;
 }
 
 section h2 {
@@ -110,11 +110,6 @@ section ul,
 section ol {
   font-size: 1em;
   line-height: 1.5;
-}
-
-/* コードブロック: スライド下部に配置 */
-section:not(.lead) pre {
-  margin-top: auto;
 }
 
 section pre {
